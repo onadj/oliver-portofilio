@@ -1,0 +1,77 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="animate">Hi, I'm</h1>
+        <h2 class="animate delay-1">Your Name</h2>
+        <p class="animate delay-2">Full Stack Web Developer specializing in Django app development | API Integrations | Technical Support Expert</p>
+        <div class="animate delay-3">
+            <a href="{% url 'contact' %}" class="btn btn-primary">Get In Touch</a>
+            <a href="{% url 'projects' %}" class="btn">View My Work</a>
+        </div>
+    </div>
+</section>
+
+<section class="parallax-section" style="background-image: url('{% static 'images/parallax-bg.jpg' %}');">
+    <div class="parallax-content">
+        <h2>Clean Code Matters</h2>
+        <p>40% brži performanse od WordPress rješenja</p>
+    </div>
+</section>
+
+<section class="about-section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p>Full Stack Web Developer specializing in Django app development | API Integrations | Technical Support Expert | Freelance Professional | Customer Support.</p>
+            <p>Trained to become a Full Stack Web Developer at the Code Institute Dublin, University credit-rated Diploma (with second honors).</p>
+            <div class="skills">
+                <h3>Skills & Technologies</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">API Integration</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Docker</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-image">
+            <img src="{% static 'images/profile.jpg' %}" alt="Profile Image">
+        </div>
+    </div>
+</section>
+
+<section class="projects-section">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card animate">
+            <div class="project-image">
+                <img src="{{ project.image.url }}" alt="{{ project.name }}">
+            </div>
+            <div class="project-info">
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description|truncatewords:20 }}</p>
+                <div class="project-links">
+                    {% if project.github_link %}
+                    <a href="{{ project.github_link }}" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    {% endif %}
+                    {% if project.live_demo %}
+                    <a href="{{ project.live_demo }}" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center; margin-top: 3rem;">
+        <a href="{% url 'projects' %}" class="btn">View All Projects</a>
+    </div>
+</section>
+{% endblock %}

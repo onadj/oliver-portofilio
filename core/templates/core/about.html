@@ -1,0 +1,71 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+        <div class="about-text">
+            {% if about %}
+                <h3>{{ about.title }}</h3>
+                <p>{{ about.description }}</p>
+                
+                {% if about.diploma %}
+                <div style="margin-top: 2rem;">
+                    <a href="{{ about.diploma.url }}" class="btn" download>
+                        <i class="fas fa-download"></i> Download Diploma
+                    </a>
+                </div>
+                {% endif %}
+            {% else %}
+                <p>Information about me is coming soon!</p>
+            {% endif %}
+        </div>
+        <div class="about-image">
+            {% if about and about.image %}
+                <img src="{{ about.image.url }}" alt="About Me">
+            {% else %}
+                <img src="{% static 'images/default-about.jpg' %}" alt="About Me">
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="experience-section" style="padding: 4rem 10%; background: var(--secondary-color);">
+    <h2 class="section-title">Experience</h2>
+    
+    <div class="timeline">
+        <div class="timeline-item animate">
+            <div class="timeline-date">Apr 2022 - Aug 2023</div>
+            <div class="timeline-content">
+                <h3>Tier 2 - Technical Support Specialist</h3>
+                <h4>Wipro</h4>
+                <p>Provided technical support to Meta/Facebook Enterprise EMEA customers as a Tier 2 technical support specialist for complex issues (live chat, correspondence, and voice).</p>
+                <p>Tested PowerShell/Python scripts for performing bulk changes to accounts/systems. Supported SSO, IDP (provisioning with Okta, Azure, G-Suite and One Login) and NodeJS/JSON-based API's implementation automation.</p>
+            </div>
+        </div>
+        
+        <div class="timeline-item animate delay-1">
+            <div class="timeline-date">Nov 2021 - Apr 2022</div>
+            <div class="timeline-content">
+                <h3>Tier 1 - Technical Support Specialist</h3>
+                <h4>Wipro</h4>
+                <p>Technical Support for Meta/Facebook Advanced customers and resolving general issues (live chat, correspondence, and voice).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="education-section" style="padding: 4rem 10%;">
+    <h2 class="section-title">Education</h2>
+    
+    <div class="education-item animate">
+        <h3>Diploma in Software Development: Second Class Honours</h3>
+        <h4>Code Institute</h4>
+        <p>Sep 2019 - Nov 2020</p>
+        <p>Full Stack Web Development program covering HTML, CSS, JavaScript, Python, Django, MongoDB, and more.</p>
+    </div>
+</section>
+{% endblock %}

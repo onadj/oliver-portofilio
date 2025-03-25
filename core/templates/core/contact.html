@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Contact Me{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+    <h2 class="section-title">Get In Touch</h2>
+    
+    <div class="contact-container">
+        <div class="contact-info animate">
+            <h3>Let's Talk About Your Project</h3>
+            <p>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+            
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        
+        <div class="contact-form animate delay-1">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success" style="color: var(--accent-color); margin-bottom: 1rem;">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+            
+            <form method="post" id="contact-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    {{ form.message.label_tag }}
+                    {{ form.message }}
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
