@@ -26,13 +26,14 @@ SECRET_KEY = 'django-insecure-ox_-_d36=ui+s@g6q-^98e_(5vx)$t341e639*h^peb3nf(wkb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-onadj-oliverportofilio-rjuux7n8u9o.ws-eu118.gitpod.io']
-CSRF_TRUSTED_ORIGINS = ['https://8000-onadj-oliverportofilio-rjuux7n8u9o.ws-eu118.gitpod.io']
+ALLOWED_HOSTS = ['8000-debug-onadj-oliverportofilio-rjuux7n8u9o.ws-eu118.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-debug-onadj-oliverportofilio-rjuux7n8u9o.ws-eu118.gitpod.io']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin", 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
